@@ -20,6 +20,7 @@ window.onload = function() {
         document.documentElement.setAttribute('data-theme', modeOnLoad);
         if (modeOnLoad == 'dark') {
             document.getElementById("modeWindow").checked = true;
+            document.getElementById('labelMode').innerHTML = '<i class="bi bi-moon-fill"></i>'
         }
         loadChannels(country);
     }
@@ -31,10 +32,12 @@ checkbox.addEventListener('change', function() {
         mode = 'dark'
         trans()
         document.documentElement.setAttribute('data-theme', 'dark')
+        document.getElementById('labelMode').innerHTML = '<i class="bi bi-moon-fill"></i>'
     } else {
         mode = 'light'
         trans()
         document.documentElement.setAttribute('data-theme', 'light')
+        document.getElementById('labelMode').innerHTML = '<i class="bi bi-brightness-high-fill"></i>'
     }
     localStorage.setItem('mode', mode);
 })
@@ -54,9 +57,9 @@ modalToggle.addEventListener('hide.bs.modal', function () {
 })
 
 let channelsItaly = [
-    ['Rai 1', 'https://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=2606803'],
-    ['Rai 2', 'https://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=308718'],
-    ['Rai 3', 'https://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=308709'],
+    ['Rai 1', 'https://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=2606803', '../tv/italy/rai-1.jpg'],
+    ['Rai 2', 'https://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=308718', '../tv/italy/rai-2.jpg'],
+    ['Rai 3', 'https://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=308709', '../tv/italy/rai-3.jpg'],
     ['Rete 4', 'https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(r4)/index.m3u8'],
     ['Canale 5', 'https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(c5)/index.m3u8'],
     ['Italia 1', 'https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(i1)/index.m3u8'],
@@ -109,28 +112,34 @@ let channelsItaly = [
 
 ]
 
-const channelsDiv = document.getElementById('channel-section');
-const settingsDiv = document.getElementById('settings-section');
+const channelsSection = document.getElementById('channel-section');
+const channelsDiv = document.getElementById('channels');
+const settingsSection = document.getElementById('settings-section');
 
 function loadChannels(country) {
     if (country == 'Italy') {
         for (let i = 0; i < channelsItaly.length; i++) {
-            let heading = document.createElement('div')
-            heading.innerHTML = channelsItaly[i][0]
-            channelsDiv.appendChild(heading)
+            // let heading = document.createElement('div')
+            // heading.innerHTML = channelsItaly[i][0]
+            // channelsSection.appendChild(heading)
+            let backgroundButton = document.createElement('div');
+            backgroundButton.className = 'channel-select';
+            const image = document.createElement('img');
+            image.src = channelsItaly[i][2];
+            image.alt = channelsItaly[i][0];
+            backgroundButton.appendChild(image);
+            channelsDiv.appendChild(backgroundButton)
         }
     }
 }
 
-
-
-// function content(page) {
-//     if (page == 'home') {
-//         channelsDiv.style.display = "block";
-//         settingsDiv.style.display = 'none';
-//     }
-//     else if (page == 'settings') {
-//         settingsDiv.style.display = 'flex';
-//         channelsDiv.style.display = 'none'
-//     }
-// }
+function content(page) {
+    if (page == 'home') {
+        channelsSection.style.display = "flex";
+        settingsSection.style.display = 'none';
+    }
+    else if (page == 'settings') {
+        settingsSection.style.display = 'block';
+        channelsSection.style.display = 'none'
+    }
+}

@@ -1,15 +1,13 @@
 @font-face {
   font-family: druk;
   src: url(druk-regular.woff2) format('woff2');
-  font-weight: 400;
+  font-weight: normal;
 }
-
 @font-face {
   font-family: druk;
   src: url(hanson-bold.woff2) format('woff2');
-  font-weight: 700;
+  font-weight: bold;
 }
-
 html {
   --bg: #FCFCFC;
   --nav: #e6e6e6;
@@ -35,6 +33,10 @@ body {
 }
 .navbar {
   background-color: var(--nav);
+}
+#top {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 #bottom {
   border-top-left-radius: 1rem;
@@ -84,8 +86,35 @@ html.transition *:after {
 .modal-content > * {
   border: none;
 }
-@media only screen and (max-width: 600px) {
+#channel-section {
+  display: flex;
+}
+#settings-section {
+  display: none;
+}
+.channel-select {
+  width: calc(8rem + 10%);
+  height: 8.5rem;
+  border-radius: 2rem;
+  margin: 5px;
+}
+.channel-select > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+.container-channels {
+  place-content: space-between;
+}
+@media only screen and (max-width: 400px) {
   .video-js > * {
     padding: 2rem;
+  }
+  .container-channels {
+    place-content: center;
+  }
+  .channel-select {
+    width: calc(7rem + 10%);
   }
 }
