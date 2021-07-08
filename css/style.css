@@ -47,7 +47,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1201;
 }
 .disppear{
   animation: vanish 1s forwards;
