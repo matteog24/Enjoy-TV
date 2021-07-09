@@ -115,20 +115,33 @@ let channelsItaly = [
 const channelsSection = document.getElementById('channel-section');
 const channelsDiv = document.getElementById('channels');
 const settingsSection = document.getElementById('settings-section');
+const video = document.querySelector('video');
+const titleVideo = document.getElementById('channel-label');
 
 function loadChannels(country) {
     if (country == 'Italy') {
         for (let i = 0; i < channelsItaly.length; i++) {
-            // let heading = document.createElement('div')
-            // heading.innerHTML = channelsItaly[i][0]
-            // channelsSection.appendChild(heading)
             let backgroundButton = document.createElement('div');
             backgroundButton.className = 'channel-select';
+            backgroundButton.setAttribute('data-bs-toggle', 'modal');
+            backgroundButton.setAttribute('data-bs-target', '#stream-modal');
+            backgroundButton.onclick = function() {
+                titleVideo.innerHTML = channelsItaly[i][0];
+                video.src = channelsItaly[i][1];
+                var playPromise = video.play();
+                if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    
+                }).catch(function(error) {
+                    console.log(false)
+                });
+                }
+            }
             const image = document.createElement('img');
             image.src = channelsItaly[i][2];
             image.alt = channelsItaly[i][0];
             backgroundButton.appendChild(image);
-            channelsDiv.appendChild(backgroundButton)
+            channelsDiv.appendChild(backgroundButton);
         }
     }
 }

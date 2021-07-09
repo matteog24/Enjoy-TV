@@ -29,10 +29,15 @@ body {
   padding-right: 2rem;
 }
 * {
+  user-select: none;
+  -webkit-user-select: none;
   color: var(--color-text);
 }
 .navbar {
   background-color: var(--nav);
+}
+.navbar-brand {
+  cursor: pointer;
 }
 #top {
   border-bottom-left-radius: 1rem;
@@ -86,6 +91,12 @@ html.transition *:after {
 .modal-content > * {
   border: none;
 }
+.modal-body {
+  height: 100%;
+}
+#close > i {
+  color: white;
+}
 #channel-section {
   display: flex;
 }
@@ -97,6 +108,7 @@ html.transition *:after {
   height: 8.5rem;
   border-radius: 2rem;
   margin: 5px;
+  cursor: pointer;
 }
 .channel-select > img {
   width: 100%;
@@ -115,7 +127,10 @@ html.transition *:after {
     place-content: center;
   }
   .channel-select {
-    width: calc(7rem + 10%);
+    width: calc(7rem + 8%);
     height: 5rem;
+  }
+  .channel-select > img {
+    border-radius: 1rem;
   }
 }
