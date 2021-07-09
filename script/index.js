@@ -128,14 +128,7 @@ function loadChannels(country) {
             backgroundButton.onclick = function() {
                 titleVideo.innerHTML = channelsItaly[i][0];
                 video.src = channelsItaly[i][1];
-                var playPromise = video.play();
-                if (playPromise !== undefined) {
-                playPromise.then(function() {
-                    
-                }).catch(function(error) {
-                    console.log(false)
-                });
-                }
+                video.play();
             }
             const image = document.createElement('img');
             image.src = channelsItaly[i][2];
