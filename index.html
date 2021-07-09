@@ -66,15 +66,30 @@
           <div onclick="content('settings')" class="navbar-brand" href="#"><i class="bi bi-gear-fill"></i></div>
         </div>
     </nav>
-    <!--
-    <video id=stream class="video-js vjs-default-skin position-absolute top-50 start-50 translate-middle" controls>
-        <source
-           src="https://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=2606803"
-           type="application/x-mpegURL">
-      </video> -->
-      <script src="video.js"></script>
-      <script src="videojs-contrib-hls.min.js"></script>
-      <script>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#stream-modal">
+        Launch demo modal
+    </button>
+    <div class="modal fade show" id="stream-modal" tabindex="-1" aria-labelledby="stream-modal" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Channel Name</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="document.querySelector('video').pause();"></button>
+            </div>
+            <div class="modal-body">
+                <video id=stream class="video-js vjs-default-skin" controls>
+                    <source
+                       src="https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(r4)/index.m3u8"
+                       type="application/x-mpegURL">
+                </video> 
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="video.js"></script>
+    <script src="videojs-contrib-hls.min.js"></script>
+    <script>
       var player = videojs('stream');
       player.play();
     </script>
@@ -93,6 +108,9 @@
             myModal.show(modalToggle)
         }
         localStorage.noFirstVisit = true
+
+        // var playPromise = document.querySelector('video').play();
+
     </script>
 </body>
 </html>

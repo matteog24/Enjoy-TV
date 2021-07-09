@@ -105,9 +105,9 @@ html.transition *:after {
   border-radius: 2rem;
 }
 .container-channels {
-  place-content: space-between;
+  place-content: space-around;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 410px) {
   .video-js > * {
     padding: 2rem;
   }
@@ -116,5 +116,6 @@ html.transition *:after {
   }
   .channel-select {
     width: calc(7rem + 10%);
+    height: 5rem;
   }
 }

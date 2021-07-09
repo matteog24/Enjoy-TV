@@ -1,9 +1,8 @@
 .video-js {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-  height: 85%;
-  width: 95%;
-  margin-top: 20px;
+  border-radius: 2rem;
+  height: 100%;
+  width: 100%;
+  margin-top: -10px;
 }
 
 .vjs-icon-placeholder, .vjs-live-display, .vjs-volume-level{
