@@ -85,23 +85,14 @@
     <script src="./service-worker.js"></script>
 
     <script type="module">
-
         if (!localStorage.noFirstVisit) {
             var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
             keyboard: false
             })
-            var modalToggle = document.getElementById('staticBackdrop') // relatedTarget
+            var modalToggle = document.getElementById('staticBackdrop')
             myModal.show(modalToggle)
         }
         localStorage.noFirstVisit = true
-    </script>
-    <script>
-        function collapse(close) {
-            var elementCollapse = document.querySelector(close)
-            var bsCollapse = new bootstrap.Collapse(elementCollapse, {
-                toggle: true
-            })
-        }
     </script>
 </body>
 </html>
